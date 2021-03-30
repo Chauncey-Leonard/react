@@ -27,3 +27,9 @@
 2. `DOM Diff`算法，最小化页面重绘
 
 ### 二、基本使用
+
+#### 1.  React开发环境搭建
+
+- `react.js`：核心文件
+- `react-dom.js`：渲染页面中的`DOM`，当前文件依赖于`react`核心文件
+- `babel.js`：`ES6`转换成`ES5`，`JSX`语法转换成`JavaScript`，浏览器代码兼容
