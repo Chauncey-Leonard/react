@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React初体验</title>
+</head>
+
+<body>
+    <!-- React 容器 -->
+    <div id="app"></div>
+    <!-- React 核心库 -->
+    <script type="text/javascript" src="../../js/react.development.js"></script>
+    <!-- 用于 React 操作DOM -->
+    <script type="text/javascript" src="../../js/react-dom.development.js"></script>
+    <!-- 用于将jsx转化为js -->
+    <script type="text/javascript" src="../../js/babel.min.js"></script>
+    <!-- 一定要写text/babel -->
+    <script type="text/babel">
+        // 创建虚拟DOM
+        const element = <h1>Hello, React</h1>
+        // 渲染虚拟DOM到页面
+        ReactDOM.render(
+            element,
+            document.getElementById('app')
+        );
+    </script>
+</body>
+
+</html>
