@@ -63,3 +63,20 @@
 - 本质上虚拟`DOM`是`Object`类型的对象
 - 虚拟`DOM`比较轻量,真实`DOM`比较笨重,因为虚拟`DOM`是`React`内部在使用,无需真实`DOM`上那么多的属性
 - 虚拟`DOM`最终会被`React`转化为真实`DOM`,呈现在页面上
+
+### 三、React `JSX`
+
+#### 1. `JSX`
+
+- 全称:`JavaScript XML`
+- `React`定义的一种类似于`XML`的`JS`扩展语法:`JS + XML`
+- 本质是`React.createElement(component, props, ...children)`方法的语法糖
+- 作用：用来简化创建虚拟`DOM`
+  - 写法: `const element = <h1>Hello, JSX</h1>`
+  - 注意1: 它不是字符串,也不是`HTML/XML`标签
+  - 注意2: 它最终产生的就是一个`JS`对象
+
+- 标签名任意:`HTML`标签或其他标签
+
+#### 2. 语法规则
+
