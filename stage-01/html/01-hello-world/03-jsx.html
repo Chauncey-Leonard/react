@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JSX语法</title>
+  <style>
+    .title {
+      background-color: orange;
+      width: 200px;
+    }
+  </style>
+</head>
+<body>
+<div id="app"></div>
+<script type="text/javascript" src="../../js/react.development.js"></script>
+<script type="text/javascript" src="../../js/react-dom.development.js"></script>
+<script type="text/javascript" src="../../js/babel.min.js"></script>
+<script type="text/babel">
+  const myId = 'title';
+  const message = 'element content';
+  // 创建虚拟DOM
+  const element = (
+    <div className="title" id={ myId }>
+      <h2 style={{ color: 'white' }}>{ message }</h2>
+    </div>
+  )
+  // 渲染虚拟DOM到页面
+  ReactDOM.render(element, document.getElementById('app'));
+</script>
+</body>
+</html>
