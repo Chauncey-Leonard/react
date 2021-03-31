@@ -33,3 +33,28 @@
 - `react.js`：核心文件
 - `react-dom.js`：渲染页面中的`DOM`，当前文件依赖于`react`核心文件
 - `babel.js`：`ES6`转换成`ES5`，`JSX`语法转换成`JavaScript`，浏览器代码兼容
+
+#### 2. 创建虚拟DOM的方式
+
+`JS`（不推荐使用）
+
+```javascript
+<script>
+  // 创建虚拟DOM
+  const element = React.createElement('h1', { id: 'title' }, 'Create Virtual DOM By JS');
+  // 渲染虚拟DOM到页面
+  ReactDOM.render(element, document.getElementById('app'));
+</script>
+```
+
+`JSX`
+
+```javascript
+<script type="text/babel">
+  // 创建虚拟DOM
+  const element = <h1>Create Virtual DOM By JSX</h1>
+  // 渲染虚拟DOM到页面
+  ReactDOM.render(element, document.getElementById('app'));
+</script>
+```
+
