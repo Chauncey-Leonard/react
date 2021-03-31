@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>使用JS创建虚拟DOM</title>
+</head>
+<body>
+<div id="app"></div>
+<script src="../../js/react.development.js"></script>
+<script src="../../js/react-dom.development.js"></script>
+<script>
+  // 创建虚拟DOM
+  const element = React.createElement('h1', { id: 'title' }, 'Create Virtual DOM By JS');
+  // 渲染虚拟DOM到页面
+  ReactDOM.render(element, document.getElementById('app'));
+</script>
+</body>
+</html>
