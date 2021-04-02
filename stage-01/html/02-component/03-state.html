@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>组件核心属性：state</title>
+</head>
+<body>
+<div id="app"></div>
+<script type="text/javascript" src="../../js/react.development.js"></script>
+<script type="text/javascript" src="../../js/react-dom.development.js"></script>
+<script type="text/javascript" src="../../js/babel.min.js"></script>
+<script type="text/babel">
+  // 创建类组件
+  class Weather extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        hot: false
+      }
+    }
+
+    render() {
+      const {hot} = this.state;
+      return (
+        <div>
+          <h2>
+            今天天气{hot ? '炎热' : '清凉'}
+          </h2>
+        </div>
+      );
+    }
+  }
+
+  ReactDOM.render(<Weather/>, document.getElementById('app'))
+</script>
+</body>
+</html>
