@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>函数式组件</title>
+</head>
+<body>
+<div id="app"></div>
+<script type="text/javascript" src="../../js/react.development.js"></script>
+<script type="text/javascript" src="../../js/react-dom.development.js"></script>
+<script type="text/javascript" src="../../js/babel.min.js"></script>
+<script type="text/babel">
+  // 创建函数式组件
+  function MyComponent() {
+    return <h2>functional components</h2>
+  }
+
+  /**
+   * 原理：ReactDOM.render(<MyComponent/>, document.getElementById('app'))
+   * 1.React解析组件标签，找到MyComponent组件
+   * 2.发现组件是使用函数定义的，随后调用该函数，将返回的虚拟DOM转为真实DOM，随后渲染在页面上
+   */
+  ReactDOM.render(<MyComponent/>, document.getElementById('app'))
+</script>
+</body>
+</html>
