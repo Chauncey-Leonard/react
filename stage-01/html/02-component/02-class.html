@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>类组件</title>
+</head>
+<body>
+<div id="app"></div>
+<script type="text/javascript" src="../../js/react.development.js"></script>
+<script type="text/javascript" src="../../js/react-dom.development.js"></script>
+<script type="text/javascript" src="../../js/babel.min.js"></script>
+<script type="text/babel">
+  /**
+   * 创建类组件
+   */
+  class MyComponent extends React.Component {
+    render() {
+      return (
+        <div>
+          <h2>Class Component</h2>
+        </div>
+      );
+    }
+  }
+
+  /**
+   * 1.React解析组件标签，找到MyComponent组件
+   * 2.发现组件是类定义的，实例化该对象，并通过该实例调用到原型上的render方法
+   * 3.将render返回的虚拟DOM转为真实DOM，随后渲染在页面上
+   */
+  ReactDOM.render(<MyComponent/>, document.getElementById('app'))
+</script>
+</body>
+</html>
