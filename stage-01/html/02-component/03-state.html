@@ -13,22 +13,25 @@
 
   // 创建类组件
   class Weather extends React.Component {
+    // 构造器只调用一次
     constructor(props) {
       super(props);
 
       this.state = {
-        hot: false
+        hot: false,
+        wind: '微风'
       }
       // 解决类中this的指向问题
       this.changeWeather = this.changeWeather.bind(this);
     }
 
+    // render调用 1 + n 次：state更新的次数
     render() {
-      const { hot  } = this.state;
+      const { hot, wind } = this.state;
       return (
         <div>
           <h2 onClick={ this.changeWeather }>
-            今天天气{ hot ? '炎热' : '清凉' }
+            今天天气{ hot ? '炎热' : '清凉' }, { wind }
           </h2>
         </div>
       );
@@ -40,7 +43,10 @@
      * 3.类中的方法默认开启了局部的严格模式，所以changeWeather中的this为undefined
      */
     changeWeather() {
-      console.log(this.state.hot);
+      const hot = this.state.hot
+      // 注意：state的值不可以直接修改，需要借助React的API
+      // 更新的操作是一种合并，不是替换
+      this.setState({ hot: !hot });
     }
 
   }
