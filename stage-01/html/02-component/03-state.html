@@ -15,9 +15,12 @@
   class Weather extends React.Component {
     constructor(props) {
       super(props);
+
       this.state = {
         hot: false
       }
+      // 解决类中this的指向问题
+      this.changeWeather = this.changeWeather.bind(this);
     }
 
     render() {
