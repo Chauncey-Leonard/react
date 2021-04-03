@@ -10,6 +10,7 @@
 <script type="text/javascript" src="../../js/react-dom.development.js"></script>
 <script type="text/javascript" src="../../js/babel.min.js"></script>
 <script type="text/babel">
+
   // 创建类组件
   class Weather extends React.Component {
     constructor(props) {
@@ -20,18 +21,29 @@
     }
 
     render() {
-      const {hot} = this.state;
+      const { hot  } = this.state;
       return (
         <div>
-          <h2>
-            今天天气{hot ? '炎热' : '清凉'}
+          <h2 onClick={ this.changeWeather }>
+            今天天气{ hot ? '炎热' : '清凉' }
           </h2>
         </div>
       );
     }
+
+    /**
+     * 1.changeWeather放在Weather的原型对象上，供实例使用
+     * 2.由于changeWeather是作为onClick的回调，所以不是通过实例调用的，是直接调用
+     * 3.类中的方法默认开启了局部的严格模式，所以changeWeather中的this为undefined
+     */
+    changeWeather() {
+      console.log(this.state.hot);
+    }
+
   }
 
-  ReactDOM.render(<Weather/>, document.getElementById('app'))
+  ReactDOM.render(<Weather/>, document.getElementById('app'));
+
 </script>
 </body>
 </html>
