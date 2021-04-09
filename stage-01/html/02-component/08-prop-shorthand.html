@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>props</title>
+</head>
+<body>
+<div id="app"></div>
+<script type="text/javascript" src="../../js/react.development.js"></script>
+<script type="text/javascript" src="../../js/react-dom.development.js"></script>
+<script type="text/javascript" src="../../js/babel.min.js"></script>
+<script type="text/javascript" src="../../js/prop-types.js"></script>
+<script type="text/babel">
+  // 创建组件
+  class Person extends React.Component {
+
+    // 限制标签属性的类型、必要性
+    static propTypes = {
+      name: PropTypes.string.isRequired, // 必传，且为字符串
+      sex: PropTypes.string,
+      age: PropTypes.number
+    }
+
+    // 指定标签属性默认值
+    static defaultProps = {
+      sex: '男',
+      age: 1
+    }
+
+    render() {
+      const { name, sex, age } = this.props;
+
+      return (
+        <ul>
+          <li>姓名：{ name }</li>
+          <li>性别：{ sex }</li>
+          <li>年龄：{ age + 1 }</li>
+        </ul>
+      );
+    }
+  }
+
+  const person = { name: 'Chauncey', age: 1 }
+
+  // 渲染组件
+  ReactDOM.render(<Person { ...person }/>, document.getElementById('app'));
+
+</script>
+</body>
+</html>
