@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>createRef</title>
+</head>
+<body>
+<div id="app"></div>
+<script type="text/javascript" src="../../js/react.development.js"></script>
+<script type="text/javascript" src="../../js/react-dom.development.js"></script>
+<script type="text/javascript" src="../../js/babel.min.js"></script>
+<script type="text/babel">
+  // 创建组件
+  class MyComponent extends React.Component {
+
+    // React.createRef()调用后可以返回一个容器
+    // 该容器可以存储被ref所标识的节点
+    myRef = React.createRef();
+
+    clickHandler = () => {
+      console.log(this.myRef.current.value)
+    }
+
+    render() {
+      return (
+        <div>
+          <label>
+            <input type="text" ref={ this.myRef } placeholder="点击按钮获取输入的内容"/>
+          </label>
+          <button onClick={ this.clickHandler }>点击获取输入框内容</button>
+        </div>
+      );
+    }
+  }
+
+  // 渲染组件
+  ReactDOM.render(<MyComponent />, document.getElementById('app'));
+
+</script>
+</body>
+</html>
