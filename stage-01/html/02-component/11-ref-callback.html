@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>回调函数形式的ref</title>
+</head>
+<body>
+<div id="app"></div>
+<script type="text/javascript" src="../../js/react.development.js"></script>
+<script type="text/javascript" src="../../js/react-dom.development.js"></script>
+<script type="text/javascript" src="../../js/babel.min.js"></script>
+<script type="text/babel">
+  // 创建组件
+  class MyComponent extends React.Component {
+
+    clickHandler = () => {
+      console.log(this.clickRef.value);
+    }
+
+    blurHandler = () => {
+      console.log(this.blurRef.value);
+    }
+
+    render() {
+      return (
+        <div>
+          <label>
+            <input
+              ref={ c => this.clickRef = c }
+              type="text"
+              placeholder="点击按钮获取内容"
+            />
+          </label>
+
+          <button onClick={ this.clickHandler }>
+            点击获取左侧输入框的值
+          </button>
+          <br/>
+
+          <label>
+            <input
+              ref={ c => this.blurRef = c }
+              onBlur={ this.blurHandler }
+              type="text"
+              placeholder="失去焦点获取内容"
+            />
+          </label>
+        </div>
+      );
+    }
+  }
+
+  // 渲染组件到页面
+  ReactDOM.render(<MyComponent />, document.getElementById('app'));
+
+</script>
+</body>
+</html>
