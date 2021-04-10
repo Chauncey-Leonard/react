@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>回调函数形式的ref调用的次数问题</title>
+</head>
+<body>
+<div id="app"></div>
+<script type="text/javascript" src="../../js/react.development.js"></script>
+<script type="text/javascript" src="../../js/react-dom.development.js"></script>
+<script type="text/javascript" src="../../js/babel.min.js"></script>
+<script type="text/babel">
+  /**
+   * 回调函数ref存在的问题
+   * 如果回调ref是以内联函数的方式定义的，在更新的过程中它会被执行两次，
+   * 第一次传入参数null，第二次传入参数DOM元素
+   * 因为在每次渲染时会创建一个新的函数实例，所以React清空旧的ref并设置新的，
+   * 通过将回调ref以class绑定的函数的方式可以避免执行两次的问题
+   */
+  // 创建组件
+  class MyComponent extends React.Component {
+
+    state = { hot: true }
+
+    changeWeather = () => {
+      const { hot } = this.state;
+      this.setState({ hot: !hot });
+    }
+
+    clickHandler = () => {
+      console.log(this.clickRef.value);
+    }
+
+    callRef = (currentNode) => {
+      this.clickRef = currentNode;
+    }
+
+    render() {
+
+      const { hot } =  this.state;
+
+      return (
+        <div>
+          <h2 onClick={ this.changeWeather }>
+            今天天气很{ hot ? '炎热' : '凉爽' }
+          </h2>
+          <label>
+            {/*<input
+              ref={c => this.clickRef = c}
+              type="text"
+              placeholder="点击按钮获取内容"
+            />*/}
+            <input
+              type="text"
+              ref={ this.callRef }
+              placeholder="点击按钮获取内容"
+            />
+          </label>
+
+          <button onClick={ this.clickHandler }>
+            点击获取左侧输入框的值
+          </button>
+        </div>
+      );
+    }
+  }
+
+  // 渲染组件到页面
+  ReactDOM.render(<MyComponent />, document.getElementById('app'));
+
+</script>
+</body>
+</html>
