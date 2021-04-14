@@ -19,8 +19,12 @@
       password: ''
     }
 
-    handleChange = event => {
-      this.setState({ [event.target.name]: event.target.value })
+    saveUsername = event => {
+      this.setState({ username: event.target.value })
+    }
+
+    savePassword = event => {
+      this.setState({ password: event.target.value })
     }
 
     handleSubmit = event => {
@@ -32,8 +36,8 @@
     render() {
       return (
         <form onSubmit={ this.handleSubmit }>
-          <label>用户名：<input onChange={ this.handleChange } type="text"/></label>
-          <label>密码：<input onChange={ this.handleChange } type="password"/></label>
+          <label>用户名：<input onChange={ this.saveUsername } type="text"/></label>
+          <label>密码：<input onChange={ this.savePassword } type="password"/></label>
           <button>登录</button>
         </form>
       );
