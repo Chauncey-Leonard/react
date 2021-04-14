@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>不使用函数柯里化实现</title>
+</head>
+<body>
+<div id="app"></div>
+<script type="text/javascript" src="../../js/react.development.js"></script>
+<script type="text/javascript" src="../../js/react-dom.development.js"></script>
+<script type="text/javascript" src="../../js/babel.min.js"></script>
+<script type="text/babel">
+
+  // 创建组件
+  class Login extends React.Component {
+
+    state = {
+      username: '',
+      password: ''
+    }
+
+    handleChange = (prop, event) => {
+        this.setState({ [prop]: event.target.value })
+    }
+
+    handleSubmit = e => {
+      e.preventDefault();
+      const { username, password } = this.state;
+      alert(`您输入的用户名：${ username }, 密码：${ password }`)
+    }
+
+    render() {
+      return (
+        <form onSubmit={ this.handleSubmit }>
+          <label>
+            用户名：
+            <input
+              type="text"
+              onChange={ event => this.handleChange('username', event) }
+            />
+          </label>
+
+          <label>
+            密码：
+            <input
+              type="password"
+              onChange={ event => this.handleChange('password', event) }
+            />
+          </label>
+
+          <button>登录</button>
+        </form>
+      );
+    }
+  }
+
+  // 渲染组件到页面
+  ReactDOM.render(<Login />, document.getElementById('app'))
+
+</script>
+</body>
+</html>
