@@ -28,16 +28,62 @@
       this.setState({ count: count + 1 })
     }
 
+    /**
+     * 挂载之前
+     */
     componentWillMount() {
       console.log("componentWillMount")
     }
 
+    /**
+     * 挂载之后
+     */
     componentDidMount() {
       console.log("componentDidMount")
     }
 
+    /**
+     * 组件卸载之前
+     */
     componentWillUnmount() {
       console.log("componentWillUnmount")
+    }
+
+    /**
+     * 控制组件更新的阀门
+     * @returns {boolean} true：允许更新；false：不允许更新
+     */
+    shouldComponentUpdate() {
+      console.log("shouldComponentUpdate");
+      return true;
+    }
+
+    /**
+     * 组件将要更新的钩子函数
+     */
+    componentWillUpdate() {
+      console.log('componentWillUpdate');
+    }
+
+    /**
+     * 组件更新后
+     */
+    componentDidUpdate(prevProps, prevState) {
+      console.log("componentDidUpdate")
+    }
+
+    /**
+     * 卸载组件
+     */
+    unmount = () => {
+      ReactDOM.unmountComponentAtNode(document.getElementById('app'))
+    }
+
+    /**
+     * 强制更新组件
+     */
+    force = () => {
+      this.forceUpdate();
     }
 
     render() {
@@ -48,6 +94,8 @@
         <div>
           <h2>当前计数为：{ count }</h2>
           <button onClick={ this.clickHandler }>Click Me!</button>
+          <button onClick={ this.unmount }>卸载组件</button>
+          <button onClick={ this.force }>强制更新</button>
         </div>
       );
     }
